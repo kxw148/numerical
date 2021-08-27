@@ -1,0 +1,268 @@
+######################################################################################################
+#By: Alex Snyder
+#Aug/23/2021
+#Numerical Analysis 
+######################################################################################################
+import PIL
+import math
+import numpy as np
+import matplotlib.pyplot as plt
+def poly1(x):
+    problem2=-pow(x,4)+2*x+4
+    return problem2
+def deriv_poly1(x):
+    first_deriv_problem2=-4*pow((x),3)+2
+    return first_deriv_problem2
+def poly2(x):
+    problem3=math.cos(x)-x*x
+    return problem3
+def deriv_poly2(x):
+    first_deriv_problem3=-math.sin(x)-2*x
+    return first_deriv_problem3
+def function_1(x):
+    g_prime=((1+x+((x*x)/(2))+((x*x*x)/(6)))-1)/(x)
+    return g_prime
+#######################################################################################################
+print("This is Problem 1")
+print("This is part A")
+x=0
+h=0.1
+for i in range(1,11):
+    x=x+h 
+y=1-x; 
+print("Using Python values for x and y are:")
+print("x = " ,x," y= ",y)
+print("in a real solution (arithmitic) x=1 and y=0\n")
+#########################################################
+
+#sections prints out screen shot taken from Desmos
+print("This is Part B")
+print("The image that opens show what occurs when using a scientific calculator to calcualte values of x and y")
+from PIL import Image
+image=Image.open('hw1_scientific_calc.png')
+image.show()
+#########################################################
+
+#Part C asks for a opservation between the methods used above
+print("This is Part C") 
+print("These Results lead to the conclusion that even though computers can round to 16 digits, that if rounding has to occur the solution will become approximated")
+
+
+#####################################################################################################
+#showing that there is a root between the value of 0 and 2 for -(x*x*x*x)+2*x+4
+print("\n\nThis is problem 2 ")
+print("This is part A")
+problem2A_initial=poly1(0)
+problem2A_end=poly1(2)
+print("this is the f(0)=-x^4+2*x+4 = ",problem2A_initial," ths is f(2)=-x^4+2*x+4 = ",problem2A_end)
+print("The change in sign of the function indicates through IVT that there must be a value between the two end points where y=0, I.E. a root\n")
+#########################################################
+
+#showing that there is another root between the value of -2 and 0 for -(x*x*x*x)+2*x+4
+print("This is part B, I chose [-2,0]")
+problem2B_initial=poly1(-2)
+problem2B_end=poly1(0)
+print("this is the f(-2)=-x^4+2*x+4 = ",problem2B_initial," ths is f(0)=-x^4+2*x+4 = ",problem2B_end)
+print("The change in sign of the function indicates through IVT that there must be a value between the two end points where y=0, I.E. a root")
+#########################################################
+
+#plotting the roots of the function -(x*x*x*x)+2*x+4
+Problem2B_xaxis=[-3,-2,-1,0,1,2,3]
+Problem2B_yaxis=[poly1(-3),poly1(-2),poly1(-1),poly1(0),poly1(1),poly1(2),poly1(3)]
+Problem2B_center_xaxis=[-3,-2,-1,0,1,2,3]
+Problem2B_center_yaxis=[0,0,0,0,0,0,0]
+plt.plot(Problem2B_xaxis,Problem2B_yaxis,Problem2B_center_xaxis,Problem2B_center_yaxis)
+plt.title("Problem 2B")
+plt.xlabel("x") 
+plt.ylabel("f(x)")
+plt.show()
+########################################################
+
+#finding the roots of the function -4*(x*x*x)+2
+print("\nThis is part C")
+Problem2C_intial1=deriv_poly1(0)
+Problem2C_end1=deriv_poly1(2)
+print("this is f'(0) = ",Problem2C_intial1," this is f'(2) = ",Problem2C_end1)
+Problem2C_intial2=deriv_poly1(-2)
+Problem2C_end2=deriv_poly1(0)
+print("this is f'(-2) = ",Problem2C_intial2," this is f'(0) = ",Problem2C_end2)
+#########################################################
+
+#plotting the roots of the function -4*(x*x*x)+2
+Problem2C_xaxis=[-3,-2,-1,0,1,2,3]
+Problem2C_yaxis=[deriv_poly1(-3),deriv_poly1(-2),deriv_poly1(-1),deriv_poly1(0),deriv_poly1(1),deriv_poly1(2),deriv_poly1(3)]
+Problem2C_center_xaxis=[-3,-2,-1,0,1,2,3]
+Problem2C_center_yaxis=[0,0,0,0,0,0,0]
+plt.plot(Problem2C_xaxis,Problem2C_yaxis,Problem2C_center_xaxis,Problem2C_center_yaxis)
+plt.title("Problem 2C")
+plt.xlabel("x")
+plt.ylabel("f_prime(x)")
+plt.show()
+print("where values before deriavtive plot y=0 will always be positive and values after y=0 will always be negative")
+#######################################################################################################
+
+
+#finding the roots of the function cos(x)-x*x
+print("\n\nThis is Problem3")
+print("This is part A")
+print("intervals of [-1,0] and [0,1] were choosen becase cos(x) has horiznotal asymptotes at -1 and 1 ")
+problem3A_initial1=poly2(-1) 
+problem3A_end1=poly2(0)
+print("this is the f(-1)=-cos(x)-x*x = ",problem3A_initial1," ths is f(2)=cos(x)-x*x = ",problem3A_end1)
+print("\nsecond set")
+problem3A_initial2=poly2(0)
+problem3A_end2=poly2(1)
+print("this is the f(0)=-cos(x)-x*x = ",problem3A_initial2," ths is f(1)=cos(x)-x*x = ",problem3A_end2)
+print("the change in sign between between the begin point and end point in sets 1 and 2 indicate that there is 2 points where y=0, I.E. Roots")
+#######################################################
+
+#plotting the roots of the function cos(x)-x*x
+Problem3A_xaxis=[-2,-1.5,-1,-.5,0,.5,1,1.5,2]
+Problem3A_yaxis=[poly2(-2),poly2(-1.5),poly2(-1),poly2(-.5),poly2(0),poly2(.5),poly2(1),poly2(1.5),poly2(2)]
+Problem3A_center_xaxis=[-2,-1.5,-1,-.5,0,.5,1,1.5,2]
+Problem3A_center_yaxis=[0,0,0,0,0,0,0,0,0]
+plt.plot(Problem3A_xaxis,Problem3A_yaxis,Problem3A_center_xaxis,Problem3A_center_yaxis)
+plt.title("Problem 3A")
+plt.xlabel("x") 
+plt.ylabel("f(x)")
+plt.show()
+########################################################
+
+#finding the value of the deriatives between (-1,0) and (0,-1) -sin(x)-2x
+print("\nThis is part C")
+Problem3C_intial1=deriv_poly2(-1)
+Problem3C_end1=deriv_poly2(0)
+print("this is f'(-1) = ",Problem3C_intial1," this is f'(0) = ",Problem3C_end1)
+Problem3C_intial2=deriv_poly2(0)
+Problem3C_end2=deriv_poly2(1)
+print("this is f'(0) = ",Problem3C_intial2," this is f'(1) = ",Problem3C_end2)
+########################################################
+
+#plotting the value of the deriatives of function -sin(x)-2x 
+Problem3C_xaxis=[-2,-1.5,-1,-.5,0,.5,1,1.5,2]
+Problem3C_yaxis=[deriv_poly2(-2),deriv_poly2(-1.5),deriv_poly2(-1),deriv_poly2(-.5),deriv_poly2(0),deriv_poly2(.5),deriv_poly2(1),deriv_poly2(1.5),deriv_poly2(2)]
+Problem3C_center_xaxis=[-2,-1.5,-1,-.5,0,.5,1,1.5,2]
+Problem3C_center_yaxis=[0,0,0,0,0,0,0,0,0]
+plt.plot(Problem3C_xaxis,Problem3C_yaxis,Problem3C_center_xaxis,Problem3C_center_yaxis)
+plt.title("Problem 3C")
+plt.xlabel("x") 
+plt.ylabel("f_prime(x)")
+plt.show()
+print("the single change in sign of the f' plot for Part C of Problem 3 indicates that there are only 2 roots\n\n")
+#######################################################################################################
+ 
+
+#showing the possiable conversions between base base 3 and base 10 of mantissas 
+print("This is Problem 4")
+print("This is part A")
+mantissas=[0,1,2]
+print("where values of mantissas can be = ",mantissas, "but can only using 2 decimal places .00")
+possiable1_3=.00
+possiable2_3=.01
+possiable3_3=.02
+possiable4_3=.10
+possiable5_3=.20
+possiable6_3=.11
+possiable7_3=.12
+possiable8_3=.21
+possiable9_3=.22
+print("these are the nine possiabilities in base 3 form = ",possiable1_3 ,possiable2_3 ,possiable3_3 ,possiable4_3 ,possiable5_3 ,possiable6_3 ,possiable7_3 ,possiable8_3 ,possiable9_3)
+possiabilities_base3=[possiable1_3 ,possiable2_3 ,possiable3_3 ,possiable4_3 ,possiable5_3 ,possiable6_3 ,possiable7_3 ,possiable8_3 ,possiable9_3]
+possiable1_10=.00
+possiable2_10=.11
+possiable3_10=.22
+possiable4_10=.33
+possiable5_10=.66
+possiable6_10=.44
+possiable7_10=.55
+possiable8_10=.77
+possiable9_10=.88
+print("these are the nine possiabilities in base 10 form = ",possiable1_10 ,possiable2_10 ,possiable3_10 ,possiable4_10 ,possiable5_10 ,possiable6_10 ,possiable7_10 ,possiable8_10 ,possiable9_10)
+possiabilities_base10=[possiable1_10 ,possiable2_10 ,possiable3_10 ,possiable4_10 ,possiable5_10 ,possiable6_10 ,possiable7_10 ,possiable8_10 ,possiable9_10]
+##########################################################
+
+#used calculation from power point slide 5 lecture 2 #mantisa(U-L+1)positive +1 for zero +#mantissa(U-L+1)negative
+print("\n This is part B")
+print("total number in system are equal to 19+18u-18L\n")
+##########################################################
+
+#Created Numberline in Microsoft word, took picture and loaded into python 
+print("This is part C")
+print("by multiplying eash base10 possiability by 1/3,1,3 the numberline was generated")
+from PIL import Image
+image=Image.open('number_line.png')
+image.show()
+########################################################################################################
+
+#taking the deriative of g(x) allows us to find the value of that g(x) approachs as x approachs 0 
+print("\n This is Problem 5")
+print("This is Part A")
+print("using L'Hopital's Rule the deriative of g(x) can be taken\n the limit of  g'(x) is the name as g(x)")
+print("This allows us to determine that the g(x) approachs 1 and x--->0\n")
+####################################################
+
+print("This is Part B and C")
+x_axis=[.1,.01,.001,.0001,.0001,.00001,.000001,.0000001,.00000001,.000000001,.0000000001,.00000000001,.000000000001,.0000000000001,.00000000000001,.000000000000001,.0000000000000001,.00000000000000001,.000000000000000001,.0000000000000000001,.00000000000000000001,.000000000000000000001]
+y_axis=np.zeros(len(x_axis))
+print(x_axis)
+for i in range(0,len(x_axis)):
+    y=(math.exp(x_axis[i])-1)/(x_axis[i])
+    y_axis[i]=y
+    #print(i,y_axis[i],x_axis[i])
+    
+Problem5C_center_yaxis=[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
+plt.plot(x_axis,y_axis,x_axis,Problem5C_center_yaxis,'g--')
+plt.title("Problem 5 A&B&C")
+plt.xlabel("x") 
+plt.ylabel("g(x)")
+plt.show()
+###########################################################
+
+#used a function to store approximation series of g(x)
+print("\n This is Part D")
+g_prime_y_axis=np.zeros(len(x_axis))
+for i in range(0,len(x_axis)):
+    g_prime_y=function_1(x_axis[i])
+    g_prime_y_axis[i]=g_prime_y
+    #print(x_axis[i],g_prime_y_axis[i])
+##############################################################
+
+print("/n This is Part D")    
+print("----------------------------------------------------------------------")
+print("count                 ",                      "(g(x))","                       g'(x)")
+print(1,"                    ",           y_axis[0],"          ",            g_prime_y_axis[0])
+print(2,"                    ",           y_axis[1],"           ",            g_prime_y_axis[1])
+print(3,"                    ",           y_axis[2],"          ",            g_prime_y_axis[2])
+print(4,"                    ",           y_axis[4],"           ",            g_prime_y_axis[4])
+print(6,"                    ",           y_axis[5],"           ",            g_prime_y_axis[5])
+print(7,"                    ",           y_axis[6],"          ",            g_prime_y_axis[6])
+print(8,"                    ",           y_axis[7],"          ",            g_prime_y_axis[7])
+print(9,"                    ",           y_axis[8],"           ",            g_prime_y_axis[8])
+print(10,"                   ",           y_axis[9],"           ",            g_prime_y_axis[9])
+print(11,"                   ",           y_axis[10],"           ",            g_prime_y_axis[10])
+print(12,"                   ",           y_axis[11],"           ",            g_prime_y_axis[11])
+print(13,"                   ",           y_axis[12],"           ",            g_prime_y_axis[12])
+print(14,"                   ",           y_axis[13],"          ",            g_prime_y_axis[13])
+print(15,"                   ",           y_axis[14],"          ",            g_prime_y_axis[14])
+print(16,"                   ",           y_axis[15],"          ",            g_prime_y_axis[15])
+print(17,"                   ",           y_axis[16],"                         ",            g_prime_y_axis[16])
+print(18,"                   ",           y_axis[17],"                         ",            g_prime_y_axis[17])
+print(19,"                   ",           y_axis[18],"                         ",            g_prime_y_axis[18])
+print(20,"                   ",           y_axis[19],"                         ",            g_prime_y_axis[19])
+print(21,"                   ",           y_axis[20],"                         ",            g_prime_y_axis[20])
+print("----------------------------------------------------------------------")
+##################################################################################
+
+print("\nThis is Problem 6")
+expression_1=1+pow(2,52)
+expression_2=1+pow(2,52)-1
+expression_3=1+pow(2,53)
+expression_4=1+pow(2,53)-1
+expression_5=1+pow(2,54)
+expression_6=1+pow(2,54)-1
+print("\nThis is base 10 = ",expression_1," This is in Hexadecimal = ",hex(expression_1))
+print("This is base 10 = ",expression_2," This is in Hexadecimal = ",hex(expression_2))
+print("This is base 10 = ",expression_3," This is in Hexadecimal = ",hex(expression_3))
+print("This is base 10 = ",expression_4," This is in Hexadecimal = ",hex(expression_4))
+print("This is base 10 = ",expression_5," This is in Hexadecimal = ",hex(expression_5))
+print("This is base 10 = ",expression_6," This is in Hexadecimal = ",hex(expression_6))
